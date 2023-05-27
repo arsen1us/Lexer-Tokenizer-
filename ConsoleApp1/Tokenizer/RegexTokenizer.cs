@@ -1,8 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using Lexer;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp1.Tokenizer
 {
-    public class RegexTokenizer
+    public class RegexTokenizer : ITokenizer
     {
         public List<TokenDefinition> TokenDefinitions;
         public RegexTokenizer()
@@ -12,7 +13,9 @@ namespace ConsoleApp1.Tokenizer
                 new TokenDefinition(new Regex(@"^//\S*//", RegexOptions.IgnoreCase), TokenType.T_Comment),
                 new TokenDefinition(new Regex(@"^\>=", RegexOptions.IgnoreCase), TokenType.T_SignMoreEquals),
                 new TokenDefinition(new Regex(@"^\<=", RegexOptions.IgnoreCase), TokenType.T_SignLessEquals),
+                new TokenDefinition(new Regex(@"^\+{2}", RegexOptions.IgnoreCase), TokenType.T_Increment),
                 new TokenDefinition(new Regex(@"^\+", RegexOptions.IgnoreCase), TokenType.T_Plus),
+                new TokenDefinition(new Regex(@"^\-{2}", RegexOptions.IgnoreCase), TokenType.T_Decrement),
                 new TokenDefinition(new Regex(@"^\-", RegexOptions.IgnoreCase), TokenType.T_Minus),
                 new TokenDefinition(new Regex(@"^\*", RegexOptions.IgnoreCase), TokenType.T_Multiplication),
                 new TokenDefinition(new Regex(@"^\/", RegexOptions.IgnoreCase), TokenType.T_Division),

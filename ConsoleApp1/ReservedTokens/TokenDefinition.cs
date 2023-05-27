@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConsoleApp1.Tokenizer;
+using System.Text.RegularExpressions;
 
-namespace Lexer(Tokenizer).ReservedTokens
+public class TokenDefinition
 {
-    internal class TokenDefinition
-{
-}
+    private ReservedTokenType TokenType { get; }
+    private Regex _regex { get; }
+
+    public TokenDefinition(ReservedTokenType tokenType, Regex regex)
+    {
+        TokenType = tokenType;
+        _regex = regex;
+    }
+
+    public TokenMatch Match(string text)
+    {
+        throw new Exception();
+    }
 }

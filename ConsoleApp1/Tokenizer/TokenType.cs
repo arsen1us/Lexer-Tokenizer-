@@ -35,7 +35,9 @@ namespace ConsoleApp1.Tokenizer
         T_Invalid, // }
         T_Number,
         T_Symbol,
-        T_Comment
+        T_Comment,
+        T_Increment,
+        T_Decrement
            
     }
 }
