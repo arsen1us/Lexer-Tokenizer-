@@ -12,5 +12,6 @@ namespace ConsoleApp1.Tokenizer
         public TokenType TokenType { get; set; }
         public string Value { get; set; } = string.Empty;
         public string RemainingText { get; set; }
+        public int Position { get; set; }
     }
 }

@@ -9,15 +9,16 @@ namespace ConsoleApp1.Tokenizer
         {
             TokenDefinitions = new List<TokenDefinition>
             {
+                new TokenDefinition(new Regex(@"^//\S*//", RegexOptions.IgnoreCase), TokenType.T_Comment),
+                new TokenDefinition(new Regex(@"^\>=", RegexOptions.IgnoreCase), TokenType.T_SignMoreEquals),
+                new TokenDefinition(new Regex(@"^\<=", RegexOptions.IgnoreCase), TokenType.T_SignLessEquals),
                 new TokenDefinition(new Regex(@"^\+", RegexOptions.IgnoreCase), TokenType.T_Plus),
                 new TokenDefinition(new Regex(@"^\-", RegexOptions.IgnoreCase), TokenType.T_Minus),
                 new TokenDefinition(new Regex(@"^\*", RegexOptions.IgnoreCase), TokenType.T_Multiplication),
                 new TokenDefinition(new Regex(@"^\/", RegexOptions.IgnoreCase), TokenType.T_Division),
                 new TokenDefinition(new Regex(@"^\%", RegexOptions.IgnoreCase), TokenType.T_Persent),
                 new TokenDefinition(new Regex(@"^\>", RegexOptions.IgnoreCase), TokenType.T_SignMore),
-                new TokenDefinition(new Regex(@"^\<", RegexOptions.IgnoreCase), TokenType.T_SignLess),
-                new TokenDefinition(new Regex(@"^\>=", RegexOptions.IgnoreCase), TokenType.T_SignMoreEquals),
-                new TokenDefinition(new Regex(@"^\<=", RegexOptions.IgnoreCase), TokenType.T_SignLessEquals),
+                new TokenDefinition(new Regex(@"^\<", RegexOptions.IgnoreCase), TokenType.T_SignLess),      
                 new TokenDefinition(new Regex(@"^\=", RegexOptions.IgnoreCase), TokenType.T_Equals),
                 new TokenDefinition(new Regex(@"^\!=", RegexOptions.IgnoreCase), TokenType.T_NoEqual),
                 new TokenDefinition(new Regex(@"^\==", RegexOptions.IgnoreCase), TokenType.T_Appropriation),
@@ -33,6 +34,8 @@ namespace ConsoleApp1.Tokenizer
                 new TokenDefinition(new Regex(@"^\]", RegexOptions.IgnoreCase), TokenType.T_CloseSquareBracket),
                 new TokenDefinition(new Regex(@"^\{", RegexOptions.IgnoreCase), TokenType.T_OpenBrace),
                 new TokenDefinition(new Regex(@"^\}", RegexOptions.IgnoreCase), TokenType.T_CloseBrace),
+                new TokenDefinition(new Regex(@"[a-z]+", RegexOptions.IgnoreCase), TokenType.T_Symbol),
+                new TokenDefinition(new Regex(@"[0-9]+", RegexOptions.IgnoreCase), TokenType.T_Number),
             };
         }
         public List<TokenMatch> Tokenize(string text)

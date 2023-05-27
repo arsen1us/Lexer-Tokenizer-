@@ -23,28 +23,22 @@ using NUnit.Framework;
 //    Employee emp = new Employee();
 //}
 
-//public class FinalizeObject : IDisposable
-//{
-//    public int Id { get; set; }
+string str = "AAAa123!/%12><>=<1234====!=&&3||!;,.4()[]{}2";
 
-//    public FinalizeObject(int id)
-//    {
-//        Id= id;
-//    }
-//    public void Dispose()
-//    {
-//        Console.WriteLine("Восвобождение объекта");
-//    }
-//}
-
-string str = "!/%><>=<====!=&&||!;,.()[]{}";
-
+string comment = "//aaa//";
 var regexTokenizer = new RegexTokenizer();
 
-foreach (var item in regexTokenizer.Tokenize(str))
+foreach (var item in regexTokenizer.Tokenize(comment.Replace(" ", "")))
 {
     Console.WriteLine($"Token type: {item.TokenType}\nToken Value: {item.Value}");
 }
+
+foreach (var item in regexTokenizer.Tokenize(str.Replace(" ", "")))
+{
+    Console.WriteLine($"Token type: {item.TokenType}\nToken Value: {item.Value}");
+}
+
+
 
 
 

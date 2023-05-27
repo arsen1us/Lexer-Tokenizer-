@@ -32,7 +32,10 @@ namespace ConsoleApp1.Tokenizer
         T_CloseSquareBracket, // ]
         T_OpenBrace, // {
         T_CloseBrace,
-        T_Invalid// }
+        T_Invalid, // }
+        T_Number,
+        T_Symbol,
+        T_Comment
            
     }
 }
