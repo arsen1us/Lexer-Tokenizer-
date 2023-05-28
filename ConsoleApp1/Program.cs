@@ -1,7 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using ConsoleApp1.Tokenizer;
+﻿using ConsoleApp1.Tokenizer;
 using Lexer.ReservedTokens;
-using NUnit.Framework;
+using System.Text.RegularExpressions;
 
 
 ////Test();
@@ -51,12 +50,27 @@ var regexRTTokenizer = new RegexRTTokenizer();
 Regex regex1 = new Regex(@"^foreach");
 Console.WriteLine(regex1.Match("foreach"));
 
-string expression = "foreach \n(var item in items) \n\tresult++;";
+string expression = "foreach (var item in items) result++;";
+string example = "1+2=3";
 
-foreach (var item in regexTokenizer.Tokenize(expression.Replace(" ", "")))
+string assignment = "string str = asdf";
+string[] words = expression.Split(" ");
+foreach (var item in words)
 {
-    Console.WriteLine($"Token type: {item.TokenType}\nToken Value: {item.Value}");
+    foreach (var i in regexTokenizer.Tokenize(item)) { Console.WriteLine($"Token Type: {i.TokenType} | Token Value: {i.Value}"); }
 }
+
+Console.WriteLine("TEST-2: ");
+foreach (var item in Splitter(assignment))
+{
+    foreach (var i in regexTokenizer.Tokenize(item)) { Console.WriteLine($"Token Type: {i.TokenType} | Token Value: {i.Value}"); }
+}
+
+
+//foreach (var item in regexTokenizer.Tokenize(expression))
+//{
+//    Console.WriteLine($"Token type: {item.TokenType}\nToken Value: {item.Value}");
+//}
 
 //foreach (var item in regexRTTokenizer.Tokenize(expression.Replace(" ", "")))
 //{
@@ -64,5 +78,16 @@ foreach (var item in regexTokenizer.Tokenize(expression.Replace(" ", "")))
 //}
 
 
+//string str1 = "and";
+//string str2 = "add";
+//string str3 = "alias";
+
+//RegexRTTokenizer tokenizer = new RegexRTTokenizer();
+
+//tokenizer.Tokenize(str1);
+string[] Splitter(string text)
+{
+    return text.Split(" ");
+}
 
 

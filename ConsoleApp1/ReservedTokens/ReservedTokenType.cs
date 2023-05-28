@@ -1,4 +1,4 @@
-﻿public enum ReservedTokenType
+﻿public enum TokenType
 {
     //Контекстные ключевые слова
 

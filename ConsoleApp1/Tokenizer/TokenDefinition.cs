@@ -12,7 +12,7 @@ namespace ConsoleApp1.Tokenizer
         private Regex _regex { get; }
         private TokenType TokenType { get; }
 
-        public TokenDefinition(Regex regex, TokenType tokenType)
+        public TokenDefinition(TokenType tokenType, Regex regex)
         {
             _regex = regex;  
             TokenType = tokenType;

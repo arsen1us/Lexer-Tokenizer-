@@ -3,10 +3,10 @@ using System.Text.RegularExpressions;
 
 public class TokenDefinition
 {
-    private ReservedTokenType TokenType { get; }
+    private TokenType TokenType { get; }
     private Regex _regex { get; }
 
-    public TokenDefinition(ReservedTokenType tokenType, Regex regex)
+    public TokenDefinition(TokenType tokenType, Regex regex)
     {
         TokenType = tokenType;
         _regex = regex;
@@ -14,6 +14,18 @@ public class TokenDefinition
 
     public TokenMatch Match(string text)
     {
-        throw new Exception();
+        var match = _regex.Match(text);
+
+        if(match.Success)
+        {
+            if(match.Value != string.Empty)
+            {
+                return new TokenMatch
+                {
+
+                };
+            }
+        }
+        return new TokenMatch();
     }
 }
