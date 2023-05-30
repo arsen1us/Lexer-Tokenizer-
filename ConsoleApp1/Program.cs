@@ -1,6 +1,7 @@
 ﻿using ConsoleApp1.Tokenizer;
 using Lexer.ReservedTokens;
 using System.Text.RegularExpressions;
+using Lexer.Parser;
 
 
 ////Test();
@@ -65,6 +66,29 @@ foreach (var item in Splitter(assignment))
 {
     foreach (var i in regexTokenizer.Tokenize(item)) { Console.WriteLine($"Token Type: {i.TokenType} | Token Value: {i.Value}"); }
 }
+
+Console.WriteLine("TEST-3: ");
+
+
+foreach (var item in Splitter(example))
+{
+    foreach (var i in regexTokenizer.Tokenize(item)) { Console.WriteLine($"Token Type: {i.TokenType} | Token Value: {i.Value}"); }
+}
+
+string[] test = Splitter(example);
+List<TokenMatch> tokens = new List<TokenMatch>();
+foreach (var item in regexTokenizer.Tokenize(example)) 
+{
+    tokens.Add(item);
+}
+var parsedTokens = TokenParser.Parse(tokens);
+
+Console.WriteLine("Parsed Tokens: ");
+foreach(var item in parsedTokens)
+{
+    Console.WriteLine($"Value: { item.Value}\n Next Token Value: {item.Next.Value}");
+}
+
 
 
 //foreach (var item in regexTokenizer.Tokenize(expression))

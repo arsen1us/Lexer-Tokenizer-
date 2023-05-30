@@ -13,5 +13,8 @@ namespace ConsoleApp1.Tokenizer
         public string Value { get; set; } = string.Empty;
         public string RemainingText { get; set; }
         public int Position { get; set; }
+
+        public TokenMatch Next { get; set; } = null;
+        public TokenMatch Previous { get; set; } = null;
     }
 }
