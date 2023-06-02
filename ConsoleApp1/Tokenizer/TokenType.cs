@@ -8,11 +8,11 @@ namespace ConsoleApp1.Tokenizer
 {
     public enum TokenType
     {
-        T_Plus,
-        T_Minus,
-        T_Multiplication,
-        T_Division,
-        T_Persent,
+        T_OperationPlus,
+        T_OperationMinus,
+        T_OperationMultiplication,
+        T_OperationDivision,
+        T_OperationPersent,
         T_SignMore, // >
         T_SignLess, // <
         T_SignMoreEquals, // >=

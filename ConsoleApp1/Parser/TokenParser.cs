@@ -4,32 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Lexer.Parser
 {
     public static class TokenParser
     {
-        public static List<TokenMatch> Parse(List<TokenMatch> tokens)
+        public static void Parse(List<TokenMatch> tokens)
         {
-            for(int i = 0; i < tokens.Count; i++)
+            Regex regexExample = new Regex(@"^T_NumberT_Equals");
+            string result = "";
+            foreach (var token in tokens)
             {
-                if (i + 1 == tokens.Count -1)
-                {
-                    tokens[i].Previous = tokens[i - 1];
-                    tokens[i].Next = new TokenMatch { IsMatch = false };
-                    break;
-                }
-                if(i - 1 == -1)
-                {
-                    tokens[i].Previous = new TokenMatch { IsMatch = false };    
-                }
-                else
-                {
-                    tokens[i].Next = tokens[i + 1];
-                    tokens[i].Previous = tokens[i - 1];
-                }
+                result += token.TokenType.ToString();
             }
-            return tokens;
+            
+            var match = regexExample.Match(result);
+            if (match.Success)
+            {
+                Console.WriteLine(
+                    $"\t\t\t{tokens[0].Value}\n\t\t{tokens[1].Value}\n\t{tokens[3].Value}\n{tokens[2].Value}\t{tokens[4].Value}");
+            }
         }
+
+        
+
     }
 }
