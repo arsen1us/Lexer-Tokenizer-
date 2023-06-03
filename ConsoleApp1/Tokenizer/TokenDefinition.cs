@@ -9,8 +9,8 @@ namespace ConsoleApp1.Tokenizer
 {
     public class TokenDefinition
     {
-        private Regex _regex { get; }
-        private TokenType TokenType { get; }
+        public Regex _regex { get; }
+        public TokenType TokenType { get; }
 
         public TokenDefinition(TokenType tokenType, Regex regex)
         {
